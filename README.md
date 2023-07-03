@@ -23,3 +23,9 @@
 7. `commandShow` 함수를 생성
    7-1. `commandShowAll`, `commandShowTodo`, `commandShowDoing`, `commandShowDone` 함수 생성
 8. `commandShowAll`: `forEach`문을 사용하여 `status` 값에 따라 필터링 진행
+9. `commandShowTodo`: `filter`문을 사용하여 `toDo status` 필터링 진행
+10. `commandShowDoing`: `filter`문을 사용하여 `Doing status` 필터링 진행
+11. `commandShowDone`: `filter`문을 사용하여 `Done status` 필터링 진행
+12. `commandAdd` 함수를 생성 후 todos 객체에 추가.
+13. `commandDelete` 함수를 생성 후 id 파라미터에 해당하는 todo 삭제
+14. `commandUpdate` 함수를 생성 후 해당 id에 대한 상태 수정
