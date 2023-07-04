@@ -35,6 +35,7 @@ function commandAdd(name, tags) {
 
 function commandDelete(id) {
   const deleteIndex = todos.findIndex(todo => todo.id === id);
+  if (deleteIndex === -1) throw new Error('삭제 할 ID가 존재하지 않습니다.');
   const deleteTodo = todos.splice(deleteIndex, 1)[0];
 
   console.log(`${deleteTodo.name} ${deleteTodo.status}가 목록에서 삭제 됐습니다.`.trim());
@@ -42,6 +43,8 @@ function commandDelete(id) {
 
 function commandUpdate(id, status) {
   const targetIndex = todos.findIndex(todo => todo.id === +id);
+  if (targetIndex === -1) throw new Error('업데이트 할 ID가 존재하지 않습니다.');
+
   todos[targetIndex].status = status;
   console.log(`${todos[targetIndex].name} ${todos[targetIndex].status}으로 상태 변경 됐습니다. `);
   commandShowAll();

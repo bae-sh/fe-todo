@@ -21,20 +21,26 @@ function inputCommand() {
 }
 
 function runCommand(line) {
-  const input = line.split('$');
-  switch (input[0]) {
-    case 'show':
-      commandShow(input[1]);
-      break;
-    case 'add':
-      commandAdd(input[1], input[2]);
-      break;
-    case 'delete':
-      commandDelete(input[1]);
-      break;
-    case 'update':
-      commandUpdate(input[1], input[2]);
-      break;
+  try {
+    const input = line.split('$');
+    switch (input[0]) {
+      case 'show':
+        commandShow(input[1]);
+        break;
+      case 'add':
+        commandAdd(input[1], input[2]);
+        break;
+      case 'delete':
+        commandDelete(input[1]);
+        break;
+      case 'update':
+        commandUpdate(input[1], input[2]);
+        break;
+      default:
+        throw new Error('존재하지 않는 명령어 입니다.');
+    }
+  } catch (e) {
+    console.error(e);
   }
 }
 
