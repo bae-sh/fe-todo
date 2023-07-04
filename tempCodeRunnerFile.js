@@ -1,1 +1,0 @@
-process.stdout.write('명령하세요: ');

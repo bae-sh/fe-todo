@@ -10,18 +10,16 @@ function inputCommand() {
     input: process.stdin,
     output: process.stdout,
   });
+  promptUser();
 
-  process.stdout.write('명령하세요: ');
-  rl.on('line', line => {
-    runCommand(line);
-    rl.close();
-    process.stdout.write('명령하세요: ');
-  }).on('close', () => {
-    process.exit();
-  });
+  function promptUser() {
+    rl.question('명령하세요: ', line => {
+      runCommand(line);
+      promptUser();
+    });
+  }
 }
 
-function getLine() {}
 function runCommand(line) {
   const input = line.split('$');
   switch (input[0]) {
@@ -35,7 +33,7 @@ function runCommand(line) {
       commandDelete(input[1]);
       break;
     case 'update':
-      commandUpdate();
+      commandUpdate(input[1], input[2]);
       break;
   }
 }
@@ -78,6 +76,13 @@ function commandDelete(id) {
   const deleteTodo = todos.splice(deleteIndex, 1)[0];
 
   console.log(`${deleteTodo.name} ${deleteTodo.status}가 목록에서 삭제 됐습니다.`.trim());
+}
+
+function commandUpdate(id, status) {
+  const targetIndex = todos.findIndex(todo => todo.id === +id);
+  todos[targetIndex].status = status;
+  console.log(`${todos[targetIndex].name} ${todos[targetIndex].status}으로 상태 변경 됐습니다.`);
+  commandShowAll();
 }
 
 function makeRandomId() {
