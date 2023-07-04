@@ -81,7 +81,7 @@ function commandDelete(id) {
 function commandUpdate(id, status) {
   const targetIndex = todos.findIndex(todo => todo.id === +id);
   todos[targetIndex].status = status;
-  console.log(`${todos[targetIndex].name} ${todos[targetIndex].status}으로 상태 변경 됐습니다.`);
+  console.log(`${todos[targetIndex].name} ${todos[targetIndex].status}으로 상태 변경 됐습니다. `);
   commandShowAll();
 }
 
