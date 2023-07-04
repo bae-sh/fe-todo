@@ -1,5 +1,3 @@
-//todos.js
-
 const todos = [
   {
     name: '자바스크립트 공부하기',
