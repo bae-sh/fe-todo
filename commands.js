@@ -1,4 +1,4 @@
-const { todos } = require('./todo.js');
+const todos = require('./todo.js');
 const { makeRandomId } = require('./util.js');
 const { ERROR, STATUS } = require('./constant.js');
 
@@ -57,3 +57,5 @@ function commandUpdate(id, status) {
 }
 
 module.exports = { commandShow, commandAdd, commandDelete, commandUpdate };
+
+console.log(todos);
