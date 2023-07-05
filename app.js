@@ -1,4 +1,5 @@
 const { commandShow, commandAdd, commandDelete, commandUpdate } = require('./commands');
+const { ERROR, COMMAND } = require('./constant');
 
 function init() {
   inputCommand();
@@ -24,20 +25,20 @@ function runCommand(line) {
   try {
     const input = line.split('$');
     switch (input[0]) {
-      case 'show':
+      case COMMAND.SHOW:
         commandShow(input[1]);
         break;
-      case 'add':
+      case COMMAND.ADD:
         commandAdd(input[1], input[2]);
         break;
-      case 'delete':
+      case COMMAND.DELETE:
         commandDelete(input[1]);
         break;
-      case 'update':
+      case COMMAND.UPDATE:
         commandUpdate(input[1], input[2]);
         break;
       default:
-        throw new Error('존재하지 않는 명령어 입니다.');
+        throw new Error(ERROR.WRONG_COMMAND);
     }
   } catch (e) {
     console.error(e);
