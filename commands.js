@@ -57,5 +57,3 @@ function commandUpdate(id, status) {
 }
 
 module.exports = { commandShow, commandAdd, commandDelete, commandUpdate };
-
-console.log(todos);
